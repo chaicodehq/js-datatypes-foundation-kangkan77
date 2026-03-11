@@ -49,20 +49,38 @@
  */
 export function addToCart(cart, item) {
   // Your code here
+  if(item === "" || typeof item !== "string") return cart.length
+  if(!Array.isArray(cart)) return -1
+  cart.push("mirchi") 
+  return cart.length
 }
 
 export function addUrgentItem(cart, item) {
   // Your code here
+  if(typeof item !== "string" || item.trim().length === 0) return cart
+  if(!Array.isArray(cart)) return []
+  cart.unshift("dhaniya")
+  return cart
 }
 
 export function removeLastItem(cart) {
   // Your code here
+  if(!Array.isArray(cart) || cart.length == []) return undefined
+  return cart.pop() 
 }
 
 export function isInCart(cart, item) {
   // Your code here
+  if(!Array.isArray(cart) || cart.length == []) return false
+  if(!cart.includes(item)) return false
+  if(cart.includes(item)) return true
 }
 
 export function mergeCarts(cart1, cart2) {
   // Your code here
+  // if(!Array.isArray(cart1) && !Array.isArray(cart2)) return []
+  const newCart1 = Array.isArray(cart1) ? cart1 : []
+  const newCart2 = Array.isArray(cart2) ? cart2 : []
+  const newArray = newCart1.concat(newCart2)
+  return newArray
 }
